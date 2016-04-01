@@ -1,0 +1,6 @@
+name = Campaign Monitor Rules integration
+description = "This module integrates the Campaign Monitor module with Rules"
+core = 7.x
+php = 5.0
+package = Campaign Monitor
+dependencies[] = campaignmonitor
