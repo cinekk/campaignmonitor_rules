@@ -33,7 +33,7 @@ function campaignmonitor_rules_rules_action_info() {
 // A helper function to provide us with a list of CM lists
 function campaignmonitor_rules_campaignmonitor_list_options() {
   $lists = array();
-
+  // Get the CampaignMonitor object connector
   $cm = CampaignMonitor::getConnector();
   $lists_info = $cm->getLists();
 
@@ -43,27 +43,10 @@ function campaignmonitor_rules_campaignmonitor_list_options() {
   
   return $lists;
 }
- 
-// This callback creates the hashed string by using the parameters provided through rules' UI
-function my_module_rules_action_create_hashed_string($string, $length, $algorithm) {
-  if ($length <= 0) {
-    // For anything below or equal zero lets return the default value.
-    $string = hash('md5', $string);
-  } else {
-    $string = substr(hash($algorithm, $string), 0, $length);
-  }
- 
-  return array(
-    'hashed_string' => $string,
-  );
-}
 
+// Action callback
 function campaignmonitor_rules_action_subscribe_user_to_list($list_id, $name, $mail) {
-  dpm('123');
-  dpm($list_id);
-  dpm($name);
-  dpm($mail);
-
+  // Get the CampaignMonitor object connector
   $cm = CampaignMonitor::getConnector();
 
   // Try to subscribe to the list.
